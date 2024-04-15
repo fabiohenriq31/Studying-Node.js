@@ -1,6 +1,6 @@
 # Servidor Node.js para Gerenciamento de Usuários
 
-Este é um servidor Node.js simples que permite criar, listar e deletar usuários. Ele utiliza um banco de dados JSON para armazenar os dados dos usuários.
+Este é um servidor Node.js simples que permite criar, listar, atualizar e deletar usuários. Ele utiliza um banco de dados JSON para armazenar os dados dos usuários.
 
 ## Requisitos
 
@@ -37,6 +37,12 @@ Listar usuários:
 
 Método: GET
 URL: http://localhost:3333/users
+
+Atualizar um usuário:
+
+Método: PUT
+URL: http://localhost:3333/users/:id (Substitua :id pelo ID do usuário que deseja atualizar)
+Corpo: JSON com os novos detalhes do usuário que deseja atualizar (por exemplo: { "name": "Novo Nome", "email": "novo@example.com" })
 
 Deletar um usuário:
 
