@@ -47,6 +47,4 @@ URL: http://localhost:3333/users/:id (Substitua :id pelo ID do usuário que dese
 
 Sinta-se à vontade para enviar sugestões, relatar problemas ou contribuir com o projeto!
 
-## Este README fornece instruções claras sobre como instalar e usar o servidor Node.js, juntamente com o Insomnia, para interagir com as rotas do servidor. Certifique-se de personalizar os detalhes, como URLs e comandos específicos, de acordo com a implementação real do seu servidor.
-
-## Se precisar de mais alguma coisa ou tiver outras dúvidas, estou à disposição para ajudar!
+## Este README fornece instruções claras sobre como instalar e usar o servidor Node.js, juntamente com o Insomnia, para interagir com as rotas do servidor. Certifique-se de personalizar os detalhes, como URLs e comandos específicos, de acordo com a implementação real do seu servidor. Se precisar de mais alguma coisa ou tiver outras dúvidas, estou à disposição para ajudar!
