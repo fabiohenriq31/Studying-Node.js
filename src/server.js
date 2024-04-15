@@ -1,26 +1,28 @@
 import http from 'http';
+import { json } from './middlewares/json.js';
+import { routes } from './routes.js';
 
-const users = [];
+// Query Parameters: Parametros nomeados enviados na rota após "?" (Filtros, paginação) exemplo: http://localhost:3333/users?page=2&nome=Diego utilizados para filtros, paginação, mas não sao obrigatorios
+// Route Parameters: Parametros utilizados para identificar recursos. exemplo: http://localhost:3333/users/1
+// Request Body: Envio de informações de um formulário. exemplo: 
 
-const server = http.createServer((req, res) => {
+
+const server = http.createServer( async (req, res) => {
     const {method, url} = req
 
-    if (method == 'GET' && url == '/users'){
-        return res
-        .setHeader('Content-type', 'application/json') //setHeader é utilizado  para definir um ou mais cabeçalhos.No caso específico desse código, ele está definindo o tipo de conteúdo como application/json, indicando que o corpo da resposta contém dados no formato JSON.
-        .end(JSON.stringify(users));
-    }
-
-    if (method == 'POST' && url == '/users') {
-        users.push({
-            id: 1,
-            name: "John Doe",
-            email: "john@doe.com"
-        })
-
-        return res.writeHead(201).end('')
-    }
+    await json(req,res)
     
+    const route = routes.find(route => {
+        return route.method == method && route.path.test(url)
+    })
+
+    if (route) {
+        const routeParams = req.url.match(route.path)
+
+        req.params = { ...routeParams.groups }
+
+        return route.handler(req, res)
+    }
     
     return res.writeHead(404).end('')
     
